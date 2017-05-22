@@ -1,0 +1,15 @@
+<% films.forEach(function(film) { %>
+	<div class="film-container">
+		<div class="poster">
+			<img src="<%- film['Poster'] %>" alt="poster"">
+		</div>
+		<div class="film-info">
+			<h3 class="year">
+				<%= film['Year'] %>
+			</h3>
+			<h2 class="title">
+				<%= film['Title'] %>
+			</h2>
+		</div>
+	</div>
+<% }); %>
