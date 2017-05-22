@@ -1,14 +1,30 @@
+<div class="sort">
+	<span>SORT:</span>
+	<a href="/?title=asc&page=<%= currentPage %>">TITLE</a>
+	<a href="/?year=asc&page=<%= currentPage %>">YEAR</a>
+</div>
+
+<ul class="pagination">
+	<% if (currentPage > 1) { %>
+		<li><a href="/?page=<%= currentPage - 1 %>">&laquo;</a></li>
+	<% } %>
+	<li class="page"><span><%= currentPage %></span></li>
+	<% if (currentPage < pageCount) { %>
+		<li><a href="/?page=<%= currentPage + 1 %>">&raquo;</a></li>
+	<% } %>
+</ul>
+
 <% films.forEach(function(film) { %>
 	<div class="film-container">
 		<div class="poster">
-			<img src="<%- film['Poster'] %>" alt="poster"">
+			<img src="<%- film.poster %>" alt="poster"">
 		</div>
 		<div class="film-info">
 			<h3 class="year">
-				<%= film['Year'] %>
+				<%= film.year %>
 			</h3>
 			<h2 class="title">
-				<%= film['Title'] %>
+				<%= film.title %>
 			</h2>
 		</div>
 	</div>
