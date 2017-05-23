@@ -8,6 +8,9 @@
   },
   "author": "Samuli Ristimaki",
   "license": "ISC",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "ejs": "^2.5.5",
     "express": "^4.14.0",
