@@ -1,4 +1,4 @@
-<div class="films-component">
+<div id="e1" class="films-component">
 	<!-- Sort -->
 	<div class="sort">
 		<span>SORT:</span>
@@ -6,7 +6,7 @@
 		<a href="/?year=asc&page=<%= currentPage %>">YEAR</a>
 	</div>
 	<!-- Films -->
-	<div class="flex-grid">
+	<div id="e2" class="flex-grid">
 		<% films.forEach(function(film) { %>
 			<div class="film-container col">
 				<div class="poster">
@@ -24,13 +24,17 @@
 		<% }); %>
 	</div>
 	<!-- Pagination -->
-	<div class="pagination">
-		<% if (currentPage > 1) { %>
-			<a href="/?page=<%= currentPage - 1 %>">&laquo;</a>
-		<% } %>
-		<span class="page"><%= currentPage %></span>
-		<% if (currentPage < pageCount) { %>
-			<a href="/?page=<%= currentPage + 1 %>">&raquo;</a>
-		<% } %>
+	<div id="btm" class="pagination">
+		<div class="page-btn">
+			<% if (currentPage > 1) { %>
+				<a href="/?page=<%= currentPage - 1 %>#btm"><i class="fa fa-caret-left"></i> Previous page</a>
+			<% } %>
+		</div>
+		<span class="page-num"><%= currentPage %></span>
+		<div class="page-btn">
+			<% if (currentPage < pageCount) { %>
+				<a href="/?page=<%= currentPage + 1 %>#btm">Next page <i class="fa fa-caret-right"></i></a>
+			<% } %>
+		</div>
 	</div>
 </div>

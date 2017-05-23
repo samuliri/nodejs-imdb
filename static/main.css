@@ -3,6 +3,11 @@ body {
   font-family: 'BenchNine', sans-serif;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .hero-image {
   background-image: url("star-wars-header.jpg");
   height: 50vh;
@@ -60,9 +65,44 @@ body {
 }
 
 .pagination {
-  display: block;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   text-align: center;
-  margin: 10px;
+  margin: 20px 0;
+}
+
+.page-btn {
+  align-self: flex-end;
+  position: relative;
+  min-width: 120px;
+}
+
+.page-btn a {
+  display:block;
+  min-width: 100px;
+  color: white;
+  background-color: black;
+  padding: 8px 10px;
+}
+
+.page-btn i {
+  position: absolute;
+}
+
+.page-btn i.fa-caret-left {
+  left: 10px;
+  font-size: 21px
+}
+
+.page-btn i.fa-caret-right {
+  right: 10px;
+  font-size: 21px
+}
+
+.page-num {
+  font-size: 50px;
+  line-height: 42px;
 }
 
 @media (max-width: 667px) {
@@ -73,8 +113,16 @@ body {
   .hero-text {
     font-size: 6vw;
   }
-  
+
   .sort {
     text-align: center;
+  }
+
+  .page-btn i {
+    display: none;
+  }
+
+  .page-num {
+    line-height: 50px;
   }
 }
