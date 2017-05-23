@@ -47,4 +47,10 @@ routes.get ('/', function(req, res){
     });
 });
 
+routes.post('/', function(req, res) {
+    searchdata = req.body.searchbar;
+    console.log(searchdata);
+    res.end();
+});
+
 module.exports = routes;
