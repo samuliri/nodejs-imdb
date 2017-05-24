@@ -2,19 +2,48 @@ const routes = require('express').Router();
 
 routes.get ('/', function(req, res){
     var filmsdata = req.app.locals.filmdata.films;
+    var sort = '';
+    var order = '';
+    var click = '';
+
+    click = req.query.click;
 
     //Sort title
     if (typeof req.query.title !== 'undefined') {
+      sort = 'title';
+      order = req.query.title;
+
       filmsdata.sort(function(a, b) {
         return (a.Title < b.Title) ? -1 : (a.Title > b.Title) ? 1 : 0;
       });
+
+      if (click == 'sort') {
+        if (order == 'desc') {
+          filmsdata.reverse();
+          order = 'asc';
+        } else {
+          order = 'desc';
+        }
+      }
     }
 
     //Sort year
     if (typeof req.query.year !== 'undefined') {
+      sort = 'year';
+      order = req.query.year;
+
       filmsdata.sort(function(a, b) {
         return parseFloat(a.Year) - parseFloat(b.Year);
       });
+
+      if (click == 'sort') {
+        if (order == 'desc') {
+          filmsdata.reverse();
+          order = 'asc';
+        } else {
+          order = 'desc';
+        }
+      }
     }
 
     //Pagination
@@ -43,7 +72,9 @@ routes.get ('/', function(req, res){
     res.render('default', {
       films: filmsList,
       pageCount: pageCount,
-      currentPage: currentPage
+      currentPage: currentPage,
+      sort: sort,
+      order: order
     });
 });
 

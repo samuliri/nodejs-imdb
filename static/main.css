@@ -8,6 +8,10 @@ a {
   text-decoration: none;
 }
 
+.grey {
+  color: grey;
+}
+
 .hero-image {
   background-image: url("star-wars-header.jpg");
   height: 50vh;
@@ -28,18 +32,42 @@ a {
 }
 
 .list-area {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .films-component {
   max-width: 1200px;
   margin: auto;
+  padding: 20px 0;
 }
 
 .sort {
   display: block;
   text-align: right;
   margin: 10px;
+}
+
+.sort span {
+  padding-right: 15px;
+}
+
+.sort-btn {
+  display: inline-block;
+  position: relative;
+  padding: 4px 15px 0 15px;
+}
+
+.sort-btn i {
+  position: absolute;
+  left: 0;
+}
+
+.sort-btn i.fa-caret-up {
+  top: 1px;
+}
+
+.sort-btn i.fa-caret-down {
+  bottom: 1px;
 }
 
 .flex-grid {
@@ -49,7 +77,7 @@ a {
 }
 
 .flex-grid .col {
-  flex: 1 0 20%;
+  flex: 1;
   padding: 10px;
   text-align: center;
   min-width: 280px;
@@ -116,6 +144,10 @@ a {
 
   .sort {
     text-align: center;
+  }
+
+  .flex-grid {
+    display: block;
   }
 
   .page-btn i {

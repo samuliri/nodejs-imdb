@@ -1,16 +1,36 @@
-<div id="e1" class="films-component">
+<div id="top" class="films-component">
 	<!-- Sort -->
 	<div class="sort">
 		<span>SORT:</span>
-		<a href="/?title=asc&page=<%= currentPage %>">TITLE</a>
-		<a href="/?year=asc&page=<%= currentPage %>">YEAR</a>
+		<div class="sort-btn <% if (sort != 'title') { %> grey <% } %>">
+			<% if (sort == 'title' && order == 'asc') { %>
+				<i class="fa fa-caret-up"></i>
+			<% } else if (sort == 'title' && order == 'desc') { %>
+				<i class="fa fa-caret-down"></i>
+			<% } else { %>
+				<i class="fa fa-caret-up"></i>
+				<i class="fa fa-caret-down"></i>
+			<% } %>
+			<a href="/?title=<%= order %>&page=<%= currentPage %>&click=sort#top">TITLE</a>
+		</div>
+		<div class="sort-btn <% if (sort != 'year') { %> grey <% } %>">
+			<% if (sort == 'year' && order == 'asc') { %>
+				<i class="fa fa-caret-up"></i>
+			<% } else if (sort == 'year' && order == 'desc') { %>
+				<i class="fa fa-caret-down"></i>
+			<% } else { %>
+				<i class="fa fa-caret-up"></i>
+				<i class="fa fa-caret-down"></i>
+			<% } %>
+			<a href="/?year=<%= order %>&page=<%= currentPage %>&click=sort#top">YEAR</a>
+		</div>
 	</div>
 	<!-- Films -->
-	<div id="e2" class="flex-grid">
+	<div class="flex-grid">
 		<% films.forEach(function(film) { %>
 			<div class="film-container col">
 				<div class="poster">
-					<img src="<%- film.poster %>" alt="poster" onerror="this.src='http://placehold.it/280x420';"">
+					<img src="<%= film.poster %>" alt="poster" onerror="this.src='http://placehold.it/280x420';"">
 				</div>
 				<div class="film-info">
 					<h3 class="year">
@@ -27,13 +47,13 @@
 	<div id="btm" class="pagination">
 		<div class="page-btn">
 			<% if (currentPage > 1) { %>
-				<a href="/?page=<%= currentPage - 1 %>#btm"><i class="fa fa-caret-left"></i> Previous page</a>
+				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage - 1 %>#btm"><i class="fa fa-caret-left"></i> Previous page</a>
 			<% } %>
 		</div>
 		<span class="page-num"><%= currentPage %></span>
 		<div class="page-btn">
 			<% if (currentPage < pageCount) { %>
-				<a href="/?page=<%= currentPage + 1 %>#btm">Next page <i class="fa fa-caret-right"></i></a>
+				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage + 1 %>#btm">Next page <i class="fa fa-caret-right"></i></a>
 			<% } %>
 		</div>
 	</div>
