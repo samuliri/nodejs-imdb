@@ -1,5 +1,6 @@
 <div id="top" class="films-component">
-	<!-- Sort -->
+
+	<!-- Sorting -->
 	<div class="sort">
 		<span>SORT:</span>
 		<div class="sort-btn <% if (sort != 'title') { %> grey <% } %>">
@@ -11,7 +12,7 @@
 				<i class="fa fa-caret-up"></i>
 				<i class="fa fa-caret-down"></i>
 			<% } %>
-			<a href="/?title=<%= order %>&page=<%= currentPage %>&click=sort#top">TITLE</a>
+			<a href="/?title=<%= order %>&page=<%= currentPage %>&action=sort#top">TITLE</a>
 		</div>
 		<div class="sort-btn <% if (sort != 'year') { %> grey <% } %>">
 			<% if (sort == 'year' && order == 'asc') { %>
@@ -22,9 +23,10 @@
 				<i class="fa fa-caret-up"></i>
 				<i class="fa fa-caret-down"></i>
 			<% } %>
-			<a href="/?year=<%= order %>&page=<%= currentPage %>&click=sort#top">YEAR</a>
+			<a href="/?year=<%= order %>&page=<%= currentPage %>&action=sort#top">YEAR</a>
 		</div>
 	</div>
+
 	<!-- Films -->
 	<div class="flex-grid">
 		<% films.forEach(function(film) { %>
@@ -43,18 +45,26 @@
 			</div>
 		<% }); %>
 	</div>
+
 	<!-- Pagination -->
 	<div id="btm" class="pagination">
 		<div class="page-btn">
 			<% if (currentPage > 1) { %>
-				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage - 1 %>#btm"><i class="fa fa-caret-left"></i> Previous page</a>
+				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage - 1 %>#btm">
+					<i class="fa fa-caret-left"></i>
+					Previous page
+				</a>
 			<% } %>
 		</div>
 		<span class="page-num"><%= currentPage %></span>
 		<div class="page-btn">
 			<% if (currentPage < pageCount) { %>
-				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage + 1 %>#btm">Next page <i class="fa fa-caret-right"></i></a>
+				<a href="/?<%= sort %>=<%= order %>&page=<%= currentPage + 1 %>#btm">
+					Next page
+					<i class="fa fa-caret-right"></i>
+				</a>
 			<% } %>
 		</div>
 	</div>
+
 </div>

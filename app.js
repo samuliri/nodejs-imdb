@@ -21,6 +21,8 @@ request({
 
 	if (!error && response.statusCode === 200) {
 		filmdata_all = body;
+	} else {
+	  filmdata_all = require('./static/films.json');
 	}
 
 	app.locals.filmdata = filmdata_all;

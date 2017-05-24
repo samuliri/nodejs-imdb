@@ -1,23 +1,40 @@
 const routes = require('express').Router();
 
 routes.get ('/', function(req, res){
-    var filmsdata = req.app.locals.filmdata.films;
-    var sort = '';
-    var order = '';
-    var click = '';
+    var filmsdata = req.app.locals.filmdata.films,
+        sort = '',
+        order = '',
+        action = '';
 
-    click = req.query.click;
+    action = req.query.action;
 
-    //Sort title
-    if (typeof req.query.title !== 'undefined') {
-      sort = 'title';
-      order = req.query.title;
+    // Sorting
+    if (action == 'sort') {
+      // Sort title
+      if (typeof req.query.title !== 'undefined') {
+        sort = 'title';
+        order = req.query.title;
 
-      filmsdata.sort(function(a, b) {
-        return (a.Title < b.Title) ? -1 : (a.Title > b.Title) ? 1 : 0;
-      });
+        filmsdata.sort(function(a, b) {
+          return (a.Title < b.Title) ? -1 : (a.Title > b.Title) ? 1 : 0;
+        });
 
-      if (click == 'sort') {
+        if (order == 'desc') {
+          filmsdata.reverse();
+          order = 'asc';
+        } else {
+          order = 'desc';
+        }
+      }
+      // Sort year
+      if (typeof req.query.year !== 'undefined') {
+        sort = 'year';
+        order = req.query.year;
+
+        filmsdata.sort(function(a, b) {
+          return parseFloat(a.Year) - parseFloat(b.Year);
+        });
+
         if (order == 'desc') {
           filmsdata.reverse();
           order = 'asc';
@@ -27,26 +44,7 @@ routes.get ('/', function(req, res){
       }
     }
 
-    //Sort year
-    if (typeof req.query.year !== 'undefined') {
-      sort = 'year';
-      order = req.query.year;
-
-      filmsdata.sort(function(a, b) {
-        return parseFloat(a.Year) - parseFloat(b.Year);
-      });
-
-      if (click == 'sort') {
-        if (order == 'desc') {
-          filmsdata.reverse();
-          order = 'asc';
-        } else {
-          order = 'desc';
-        }
-      }
-    }
-
-    //Pagination
+    // Pagination
     var totalFilms = filmsdata.length,
         pageSize = 8,
         pageCount = totalFilms/8,
@@ -56,7 +54,9 @@ routes.get ('/', function(req, res){
         filmsList = [];
 
     for (var i = 1; i < totalFilms; i++) {
-      films.push({poster: filmsdata[i]['Poster'], year: filmsdata[i]['Year'], title: filmsdata[i]['Title']});
+      films.push({poster: filmsdata[i]['Poster'],
+                  year: filmsdata[i]['Year'],
+                  title: filmsdata[i]['Title']});
     }
 
     while (films.length > 0) {
