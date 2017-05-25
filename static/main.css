@@ -12,6 +12,20 @@ a {
   color: grey;
 }
 
+i.fa-info-circle {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: white;
+  font-size: 30px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+i.fa-info-circle:hover {
+  color: silver;
+}
+
 .hero-image {
   background-image: url("star-wars-header.jpg");
   height: 50vh;
@@ -19,6 +33,8 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  /* This adds parallax scrolling to hero image */
+  /* background-attachment: fixed; */
 }
 
 .hero-text {
@@ -153,9 +169,66 @@ a {
   line-height: 42px;
 }
 
+#info {
+	position: absolute;
+	width: 18em;
+	height: 50em;
+	bottom: 0;
+	left: 50%;
+	margin-left: -9em;
+	font-size: 350%;
+	font-weight: bold;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+  background: rgba(250,250,250,0.9);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s linear;
+}
+
+#info.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#info:after {
+	position: absolute;
+	content: ' ';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 60%;
+	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+	pointer-events: none;
+}
+
+#infocontent {
+	position: absolute;
+	top: 100%;
+}
+
+#infocontent.animation{
+  animation: starwars 100s linear 1s infinite;
+}
+
+#infocontent iframe {
+  height:10000px;
+}
+
+@keyframes starwars {
+	0% { top: 100%; }
+	100% { top: -170%; }
+}
+
 @media (max-width: 667px) {
   body {
     font-size: 150%;
+  }
+
+  i.fa-info-circle {
+    display: none;
   }
 
   .hero-text {

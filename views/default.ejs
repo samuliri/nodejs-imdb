@@ -6,8 +6,22 @@
 	<link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+	<script>
+		function toggleInfo() {
+			if(document.getElementById("infocontent").className != 'animation') {
+				document.getElementById("info").classList.add("show");
+	    	document.getElementById("infocontent").classList.add("animation");
+				document.documentElement.style.overflow = 'hidden';
+			} else {
+				document.getElementById("info").classList.remove("show");
+				document.getElementById("infocontent").classList.remove("animation");
+				document.documentElement.style.overflow = 'auto';
+			}
+		}
+	</script>
 </head>
 <body>
+	<i class="fa fa-info-circle" onclick="toggleInfo()"></i>
 	<div class="hero-image">
 	  <div class="hero-text">
 	    <h1>STAR WARS FILMS</h1>
@@ -16,5 +30,10 @@
 	<div class="list-area">
 		<% include content/films.ejs %>
 	</div><!-- End list-area -->
+	<div id="info">
+		<div id="infocontent">
+				<iframe src="/films.json" frameborder="0" scrolling="no" width="300%"></iframe>
+		</div>
+	</div>
 </body>
 </html>
