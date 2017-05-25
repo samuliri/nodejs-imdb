@@ -6,6 +6,8 @@ var filmsurlall = "http://martti.s3-website-eu-west-1.amazonaws.com/films.json";
 
 app.set('view engine','ejs');
 
+app.set('port', (process.env.PORT || 2000));
+
 app.use(express.static(__dirname + '/static'));
 
 var server = app.listen (2000, function(){
