@@ -57,6 +57,10 @@ a {
   padding: 4px 15px 0 15px;
 }
 
+.sort-btn:hover {
+  color: black;
+}
+
 .sort-btn i {
   position: absolute;
   left: 0;
@@ -86,10 +90,22 @@ a {
   margin-top: 10px;
 }
 
-.flex-grid .col img {
-  width: 100%;
+.poster {
+  position: relative;
   height: 420px;
+}
+
+.poster img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
   object-fit: cover;
+  max-height: 420px;
+  /* This stretches the image to full poster height */
+  height: 420px;
 }
 
 .pagination {
@@ -104,6 +120,10 @@ a {
   align-self: flex-end;
   position: relative;
   min-width: 120px;
+}
+
+.page-btn:hover {
+  opacity: 0.8;
 }
 
 .page-btn a {
@@ -140,6 +160,10 @@ a {
 
   .hero-text {
     font-size: 6vw;
+  }
+
+  .list-area {
+    padding: 0;
   }
 
   .sort {

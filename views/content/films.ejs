@@ -3,7 +3,7 @@
 	<!-- Sorting -->
 	<div class="sort">
 		<span>SORT:</span>
-		<div class="sort-btn <% if (sort != 'title') { %> grey <% } %>">
+		<div class="sort-btn<% if (sort != 'title') { %> grey <% } %>">
 			<% if (sort == 'title' && order == 'asc') { %>
 				<i class="fa fa-caret-up"></i>
 			<% } else if (sort == 'title' && order == 'desc') { %>
@@ -14,7 +14,7 @@
 			<% } %>
 			<a href="/?title=<%= order %>&page=<%= currentPage %>&action=sort#top">TITLE</a>
 		</div>
-		<div class="sort-btn <% if (sort != 'year') { %> grey <% } %>">
+		<div class="sort-btn<% if (sort != 'year') { %> grey <% } %>">
 			<% if (sort == 'year' && order == 'asc') { %>
 				<i class="fa fa-caret-up"></i>
 			<% } else if (sort == 'year' && order == 'desc') { %>
