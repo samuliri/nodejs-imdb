@@ -254,4 +254,8 @@ i.fa-info-circle:hover {
   .page-num {
     line-height: 50px;
   }
+
+  #info {
+    display: none;
+  }
 }
