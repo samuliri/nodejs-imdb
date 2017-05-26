@@ -9,12 +9,19 @@ routes.get ('/', function(req, res){
     action = req.query.action;
 
     // Sorting
+    if (typeof req.query.title !== 'undefined') {
+      sort = 'title';
+      order = req.query.title;
+    }
+
+    if (typeof req.query.year !== 'undefined') {
+      sort = 'year';
+      order = req.query.year;
+    }
+    
     if (action == 'sort') {
       // Sort title
-      if (typeof req.query.title !== 'undefined') {
-        sort = 'title';
-        order = req.query.title;
-
+      if (sort == 'title') {
         filmsdata.sort(function(a, b) {
           return (a.Title < b.Title) ? -1 : (a.Title > b.Title) ? 1 : 0;
         });
@@ -27,10 +34,7 @@ routes.get ('/', function(req, res){
         }
       }
       // Sort year
-      if (typeof req.query.year !== 'undefined') {
-        sort = 'year';
-        order = req.query.year;
-
+      if (sort == 'year') {
         filmsdata.sort(function(a, b) {
           return parseFloat(a.Year) - parseFloat(b.Year);
         });
